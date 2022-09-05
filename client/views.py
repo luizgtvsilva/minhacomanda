@@ -1,11 +1,13 @@
 from rest_framework import generics
 from client.models import *
 from client.serializers import *
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from helpers.utils import *
+from rest_framework.permissions import IsAuthenticated
 
 
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def client_list_view(request):
 
     if request.method == 'GET':
